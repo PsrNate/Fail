@@ -1,0 +1,30 @@
+event:
+    pattern:  /
+    defaults: { _controller: "FailStatBundle:Event:index" }
+
+event_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FailStatBundle:Event:show" }
+
+event_new:
+    pattern:  /new
+    defaults: { _controller: "FailStatBundle:Event:new" }
+
+event_create:
+    pattern:  /create
+    defaults: { _controller: "FailStatBundle:Event:create" }
+    requirements: { _method: post }
+
+event_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FailStatBundle:Event:edit" }
+
+event_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FailStatBundle:Event:update" }
+    requirements: { _method: post }
+
+event_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FailStatBundle:Event:delete" }
+    requirements: { _method: post }

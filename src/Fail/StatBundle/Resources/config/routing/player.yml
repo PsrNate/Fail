@@ -1,0 +1,30 @@
+player:
+    pattern:  /
+    defaults: { _controller: "FailStatBundle:Player:index" }
+
+player_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FailStatBundle:Player:show" }
+
+player_new:
+    pattern:  /new
+    defaults: { _controller: "FailStatBundle:Player:new" }
+
+player_create:
+    pattern:  /create
+    defaults: { _controller: "FailStatBundle:Player:create" }
+    requirements: { _method: post }
+
+player_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FailStatBundle:Player:edit" }
+
+player_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FailStatBundle:Player:update" }
+    requirements: { _method: post }
+
+player_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FailStatBundle:Player:delete" }
+    requirements: { _method: post }

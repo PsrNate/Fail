@@ -3,24 +3,19 @@
 namespace Fail\StatBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Fail\StatBundle\Entity\Event;
 use Fail\StatBundle\Form\EventType;
 
 /**
  * Event controller.
  *
- * @Route("/event")
  */
 class EventController extends Controller
 {
     /**
      * Lists all Event entities.
      *
-     * @Route("/", name="event")
-     * @Template()
      */
     public function indexAction()
     {
@@ -28,14 +23,14 @@ class EventController extends Controller
 
         $entities = $em->getRepository('FailStatBundle:Event')->findAll();
 
-        return array('entities' => $entities);
+        return $this->render('FailStatBundle:Event:index.html.twig', array(
+            'entities' => $entities
+        ));
     }
 
     /**
      * Finds and displays a Event entity.
      *
-     * @Route("/{id}/show", name="event_show")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -49,34 +44,31 @@ class EventController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('FailStatBundle:Event:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'delete_form' => $deleteForm->createView(),
+
+        ));
     }
 
     /**
      * Displays a form to create a new Event entity.
      *
-     * @Route("/new", name="event_new")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Event();
         $form   = $this->createForm(new EventType(), $entity);
 
-        return array(
+        return $this->render('FailStatBundle:Event:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Creates a new Event entity.
      *
-     * @Route("/create", name="event_create")
-     * @Method("post")
-     * @Template("FailStatBundle:Event:new.html.twig")
      */
     public function createAction()
     {
@@ -94,17 +86,15 @@ class EventController extends Controller
             
         }
 
-        return array(
+        return $this->render('FailStatBundle:Event:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Displays a form to edit an existing Event entity.
      *
-     * @Route("/{id}/edit", name="event_edit")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -119,19 +109,16 @@ class EventController extends Controller
         $editForm = $this->createForm(new EventType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('FailStatBundle:Event:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Edits an existing Event entity.
      *
-     * @Route("/{id}/update", name="event_update")
-     * @Method("post")
-     * @Template("FailStatBundle:Event:edit.html.twig")
      */
     public function updateAction($id)
     {
@@ -157,18 +144,16 @@ class EventController extends Controller
             return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('FailStatBundle:Event:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Deletes a Event entity.
      *
-     * @Route("/{id}/delete", name="event_delete")
-     * @Method("post")
      */
     public function deleteAction($id)
     {

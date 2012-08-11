@@ -3,24 +3,19 @@
 namespace Fail\StatBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Fail\StatBundle\Entity\Player;
 use Fail\StatBundle\Form\PlayerType;
 
 /**
  * Player controller.
  *
- * @Route("/player")
  */
 class PlayerController extends Controller
 {
     /**
      * Lists all Player entities.
      *
-     * @Route("/", name="player")
-     * @Template()
      */
     public function indexAction()
     {
@@ -28,14 +23,14 @@ class PlayerController extends Controller
 
         $entities = $em->getRepository('FailStatBundle:Player')->findAll();
 
-        return array('entities' => $entities);
+        return $this->render('FailStatBundle:Player:index.html.twig', array(
+            'entities' => $entities
+        ));
     }
 
     /**
      * Finds and displays a Player entity.
      *
-     * @Route("/{id}/show", name="player_show")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -49,34 +44,31 @@ class PlayerController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('FailStatBundle:Player:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'delete_form' => $deleteForm->createView(),
+
+        ));
     }
 
     /**
      * Displays a form to create a new Player entity.
      *
-     * @Route("/new", name="player_new")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Player();
         $form   = $this->createForm(new PlayerType(), $entity);
 
-        return array(
+        return $this->render('FailStatBundle:Player:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Creates a new Player entity.
      *
-     * @Route("/create", name="player_create")
-     * @Method("post")
-     * @Template("FailStatBundle:Player:new.html.twig")
      */
     public function createAction()
     {
@@ -94,17 +86,15 @@ class PlayerController extends Controller
             
         }
 
-        return array(
+        return $this->render('FailStatBundle:Player:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Displays a form to edit an existing Player entity.
      *
-     * @Route("/{id}/edit", name="player_edit")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -119,19 +109,16 @@ class PlayerController extends Controller
         $editForm = $this->createForm(new PlayerType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('FailStatBundle:Player:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Edits an existing Player entity.
      *
-     * @Route("/{id}/update", name="player_update")
-     * @Method("post")
-     * @Template("FailStatBundle:Player:edit.html.twig")
      */
     public function updateAction($id)
     {
@@ -157,18 +144,16 @@ class PlayerController extends Controller
             return $this->redirect($this->generateUrl('player_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('FailStatBundle:Player:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Deletes a Player entity.
      *
-     * @Route("/{id}/delete", name="player_delete")
-     * @Method("post")
      */
     public function deleteAction($id)
     {
