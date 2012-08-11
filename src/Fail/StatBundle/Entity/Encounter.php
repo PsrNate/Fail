@@ -34,6 +34,20 @@ class Encounter
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+    
+    /**
+     * @var Player $winner
+     *
+     * @ORM\ManyToOne(targetEntity="Fail\StatBundle\Entity\Player")
+     */
+    private $winner;
+    
+    /**
+     * @var Player $loser
+     *
+     * @ORM\ManyToOne(targetEntity="Fail\StatBundle\Entity\Player")
+     */
+    private $loser;
 
 
     /**
