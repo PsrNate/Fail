@@ -1,14 +1,6 @@
-player:
-    resource: "@FailStatBundle/Resources/config/routing/player.yml"
-    prefix: /player
-
-encounter:
-    resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
-    prefix: /encounter
-
-event:
-    resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
-    prefix: /event
+admin_access:
+    resource: "@FailStatBundle\Resources\routing\admin.yml"
+    prefix: /admin
 
 FailStatBundle_homepage:
     pattern:  /

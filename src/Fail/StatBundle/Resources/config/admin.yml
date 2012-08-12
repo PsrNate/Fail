@@ -1,0 +1,11 @@
+player:
+    resource: "@FailStatBundle/Resources/config/routing/player.yml"
+    prefix: /player
+
+encounter:
+    resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
+    prefix: /encounter
+
+event:
+    resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
+    prefix: /event
