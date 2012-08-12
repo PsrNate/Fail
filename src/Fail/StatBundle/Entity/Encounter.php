@@ -99,4 +99,24 @@ class Encounter
     {
         return $this->date;
     }
+    
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+    }
+    
+    public function getWinner()
+    {
+        return $this->winner;
+    }
+    
+    public function setLoser($loser)
+    {
+        $this->loser = $loser;
+    }
+    
+    public function getLoser()
+    {
+        return $this->loser;
+    }
 }
