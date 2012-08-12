@@ -41,6 +41,11 @@ class Event
      * @ORM\Column(name="year", type="integer")
      */
     private $year;
+    
+    public function __toString()
+    {
+        return $this->getName().' '.$this->getYear();
+    }
 
 
     /**

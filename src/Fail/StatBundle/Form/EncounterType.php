@@ -22,6 +22,14 @@ class EncounterType extends AbstractType
         $builder->add('winner', 'entity', $player_opt);
         $builder->add('winner', 'entity', $player_opt);
         $builder->add('lostRounds', 'integer');
+        $builder->add('event', 'entity', array(
+            'class' => 'FailStatBundle:Event',
+            'query_builder' => function(EntityRepository $er) {
+                $er->createQueryBuilder('e')
+                    ->addOrderBy('e.year', 'ASC')
+                    ->addOrderBy('e.month', 'ASC');
+            }
+        ));
     }
 
     public function getName()
