@@ -1,0 +1,11 @@
+add_encounter:
+    pattern: /add
+    defaults:
+        _controller: FailStatBundle:Encounter:new
+
+create_encounter:
+    pattern: /create
+    defaults:
+        _controller: FailStatBundle:Encounter:create
+    requirements:
+        _method: post
