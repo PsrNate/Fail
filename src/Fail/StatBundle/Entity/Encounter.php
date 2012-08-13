@@ -48,6 +48,13 @@ class Encounter
      * @ORM\ManyToOne(targetEntity="Fail\StatBundle\Entity\Player")
      */
     private $loser;
+    
+    /**
+     * @var Event $event;
+     *
+     * @ORM\ManyToOne(targetEntity="Fail\StatBundle\Entity\Event")
+     */
+    private $event;
 
 
     /**
@@ -118,5 +125,15 @@ class Encounter
     public function getLoser()
     {
         return $this->loser;
+    }
+    
+    public function setEvent($event)
+    {
+        $this->event = $event;
+    }
+    
+    public function getEvent()
+    {
+        return $this->event;
     }
 }
