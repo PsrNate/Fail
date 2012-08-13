@@ -14,7 +14,7 @@ use Fail\StatBundle\Form\EncounterType;
  */
 class EncounterController extends Controller
 {
-    public function newEncounterAction()
+    public function newAction()
     {
         $encounter = new Encounter;
         $form = $this->createForm(new EncounterType, $encounter);
