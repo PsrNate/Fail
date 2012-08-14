@@ -1,5 +1,5 @@
 admin_access:
-    resource: "@FailStatBundle\Resources\routing\admin.yml"
+    resource: "@FailStatBundle/Resources/routing/admin.yml"
     prefix: /admin
 
 homepage:
