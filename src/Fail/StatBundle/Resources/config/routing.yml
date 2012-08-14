@@ -2,6 +2,6 @@ admin_access:
     resource: "@FailStatBundle\Resources\routing\admin.yml"
     prefix: /admin
 
-FailStatBundle_homepage:
+homepage:
     pattern:  /
     defaults: { _controller: FailStatBundle:Default:index }
