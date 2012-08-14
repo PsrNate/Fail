@@ -23,4 +23,30 @@ class EncounterController extends Controller
         $tpl_path = 'FailStatBundle:Encounter:new.html.twig';
         return $this->render($tpl_path, $argts);
     }
+    
+    public function createAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $encounter = new Encounter;
+        $form = $this->createForm(new EncounterType, $encounter);
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+        
+        if ($form->isValid()) {
+            // Elo snapshot
+            $we = $encounter->getWinner()->getElo();
+            $le = $encounter->getLoser()->getElo();
+            $em->persist($encounter);
+            
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_index'));
+            
+        }
+
+        return $this->render('FailStatBundle:Event:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView()
+        ));
+    }
 }

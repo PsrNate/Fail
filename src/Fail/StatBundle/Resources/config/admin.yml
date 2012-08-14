@@ -9,3 +9,9 @@ encounter:
 event:
     resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
     prefix: /event
+
+admin_index:
+    pattern: /
+    defaults:
+        _controller: FailStatBundle:Default:adminIndex
+    
