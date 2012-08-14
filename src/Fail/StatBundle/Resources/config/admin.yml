@@ -7,7 +7,7 @@ encounter:
     prefix: /encounter
 
 event:
-    resource: "@FailStatBundle/Resources/config/routing/encounter.yml"
+    resource: "@FailStatBundle/Resources/config/routing/event.yml"
     prefix: /event
 
 admin_index:
