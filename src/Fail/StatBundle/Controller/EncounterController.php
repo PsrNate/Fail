@@ -31,22 +31,24 @@ class EncounterController extends Controller
         $form = $this->createForm(new EncounterType, $encounter);
         $request = $this->getRequest();
         $form->bindRequest($request);
+        $argts['form'] = $form->createView();
         
         if ($form->isValid()) {
             // Elo snapshot
-            $we = $encounter->getWinner()->getElo();
-            $le = $encounter->getLoser()->getElo();
+            $w = $encounter->getWinner();
+            $l = $encounter->getLoser();
+            $encounter->setWinnerElo($w->getElo());
+            $encounter->setLoserElo($w->getElo());
             $em->persist($encounter);
-            
+            $w->updateElo(4, $l->getElo(), $encounter->getLostRounds());
+            $l->updateElo($encounter->getLostRounds(), $w->getElo(), 4);
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_index'));
             
         }
-
-        return $this->render('FailStatBundle:Event:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        ));
+        
+        $tpl_path = 'FailStatBundle:Encounter:new.html.twig';
+        return $this->render($tpl_path, $argts);
     }
 }

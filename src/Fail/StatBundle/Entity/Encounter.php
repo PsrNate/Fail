@@ -43,11 +43,25 @@ class Encounter
     private $winner;
     
     /**
+     * @var integer $winner_elo
+     *
+     * @ORM\Column(name="winner_elo", type="integer")
+     */
+    private $winner_elo;
+    
+    /**
      * @var Player $loser
      *
      * @ORM\ManyToOne(targetEntity="Fail\StatBundle\Entity\Player")
      */
     private $loser;
+    
+    /**
+     * @var integer $loser_elo
+     *
+     * @ORM\Column(name="loser_elo", type="integer")
+     */
+    private $loser_elo;
     
     /**
      * @var Event $event;
@@ -135,5 +149,25 @@ class Encounter
     public function getEvent()
     {
         return $this->event;
+    }
+    
+    public function setWinnerElo($elo)
+    {
+        $this->winner_elo = $elo;
+    }
+    
+    public function getWinnerElo()
+    {
+        return $this->winner_elo;
+    }
+    
+    public function setLoserElo($elo)
+    {
+        $this->loser_elo = $elo;
+    }
+    
+    public function getLoserElo()
+    {
+        return $this->loser_elo;
     }
 }
