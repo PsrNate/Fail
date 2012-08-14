@@ -130,7 +130,7 @@ class Player
     {
         // Calcul de p(D) (probabilité de victoire(différence de force))
         $d = $opp_elo - $this->elo; // Inversé pour alléger la formule
-        $p = 1 / (1 + 10 * ($d / 400));
+        $p = 1 / (1 + pow(10, $d / 400));
         
         // Calcul de W (résultat de la confrontation)
         $w = $rounds / ($rounds + $opp_rounds);
