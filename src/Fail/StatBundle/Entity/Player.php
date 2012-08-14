@@ -152,4 +152,9 @@ class Player
         if ($this->elo >= 2400)
             $this->veteran = true;
     }
+    
+    public function getMatchesCount()
+    {
+        return $this->matches_count;
+    }
 }

@@ -1,4 +1,4 @@
-<h1>Event creation</h1>
+<h1>Encounter creation</h1>
 
 <form action="{{ path('encounter_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
@@ -6,3 +6,5 @@
         <button type="submit">Create</button>
     </p>
 </form>
+
+<a href="{{ url('index_admin') }}">Back to admin index</a>
