@@ -48,6 +48,9 @@ class Player
      * @ORM\Column(name="matches_count", type="integer")
      */
     private $matches_count;
+    
+    private $rank;
+    private $ex;
 
     public function __construct()
     {
@@ -156,5 +159,25 @@ class Player
     public function getMatchesCount()
     {
         return $this->matches_count;
+    }
+    
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+    }
+    
+    public function getRank()
+    {
+        return $this->rank;
+    }
+    
+    public function setEx($ex)
+    {
+        $this->ex = $ex;
+    }
+    
+    public function getEx()
+    {
+        return $this->ex;
     }
 }

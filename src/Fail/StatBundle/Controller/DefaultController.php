@@ -20,6 +20,11 @@ class DefaultController extends Controller
         $pr = $em->getRepository('FailStatBundle:Player');
         $argts['players'] = $pr->findBy(array(), array('elo' => 'desc'));
         
+        foreach($argts['players'] as $p)
+        {
+            $p->setRank($pr->getRank($p));
+            $p->setEx($pr->getEx($p));
+        }
         $tpl_path = 'FailStatBundle:Default:index.html.twig';
         return $this->render($tpl_path, $argts);
     }

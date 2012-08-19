@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+    public function getRank(Player $p)
+    {
+        $result = $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->where('p.elo > '.$p->getElo())
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $result + 1;
+    }
+    
+    public function getEx(Player $p)
+    {
+        $result = $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->where('p.elo = '.$p->getElo())
+            ->getQuery()
+            ->getSingleScalarResult();
+        
+        return $result > 1;
+    }
 }

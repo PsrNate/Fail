@@ -1,19 +1,21 @@
 Hello !
 <a href="{{ url('admin_index') }}">Administration (Réservé à Nate, mwaha)</a>
 
-{% set rank = 1 %}
-{% set prev = 0 %}
-
-{% for p in players %}
-    {% if rank == previous %}
-        {% set r = rank %}
-    {% else %}
-        {% set r = '-' %}
-    {% endif %}
+<table>
     <tr>
-        <td>{{ r }}</td>
+        <th>Rang</th>
+        <th>Nom</th>
+        <th>Elo</th>
+    </tr>
+    {% for p in players %}
+    <tr>
+        {% if p.ex %}
+            <td>{{ p.rank }}<sup>e</sup> ex</td>
+        {% else %}
+            <td>{{ p.rank }}<sup>e</sup></td>
+        {% endif %}
         <td>{{ p.name }}</td>
         <td>{{ p.elo }}</td>
     </tr>
-    {% rank++ %}
-{% endfor %}
+    {% endfor %}
+</table>
