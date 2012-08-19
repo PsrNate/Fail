@@ -5,3 +5,8 @@ admin_access:
 homepage:
     pattern:  /
     defaults: { _controller: FailStatBundle:Default:index }
+
+report:
+    pattern: /report
+    defaults:
+        _controller: FailStatBundle:Default:report
