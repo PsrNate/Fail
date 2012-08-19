@@ -54,7 +54,7 @@ class DefaultController extends Controller
             $argts['entry'] .= $p->getEx() ? ' ex[/td]' : '[/td]';
             $argts['entry'] .= '[td]'.$p->getName().'[/td]';
             $argts['entry'] .= '[td]'.$p->getElo().'[/td]';
-            $argts['entry'] .= '[td]'.$e->getMatchesCount().'[/td][/tr]';
+            $argts['entry'] .= '[td]'.$p->getMatchesCount().'[/td][/tr]';
         }
         
         $argts['entry'] .= '[/table]';
